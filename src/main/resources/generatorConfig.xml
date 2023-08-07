@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="/Users/oshita/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar" />
+    <context id="context1" targetRuntime="MyBatis3">
+
+        <property name="overwrite" value="true"/>
+        <!--     JDBCの設定 -->
+        <jdbcConnection
+                driverClass="com.mysql.cj.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/db"
+                userId="user"
+                password="password"
+        />
+
+        <!--  Entityの生成場所 -->
+        <javaModelGenerator
+                targetPackage="com.example.bulletin.board.entity.gen"
+                targetProject="src/main/java/"
+        />
+        <!--  Mapper(xml)の生成場所 -->
+        <sqlMapGenerator
+            targetPackage="com.example.bulletin.board.mapper.gen"
+            targetProject="src/main/resources/"
+        />
+
+        <!--  Mapper(java)の生成場所 -->
+        <javaClientGenerator
+                targetPackage="com.example.bulletin.board.mapper.gen"
+                targetProject="src/main/java/"
+                type="XMLMAPPER"
+        />
+
+        <!--  生成対象のテーブル -->
+        <table tableName="post"  modelType="flat" />
+    </context>
+</generatorConfiguration>
