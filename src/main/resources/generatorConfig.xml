@@ -4,7 +4,6 @@
     <classPathEntry
             location="/Users/oshita/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar" />
     <context id="context1" targetRuntime="MyBatis3">
-        <property name="overwrite" value="true"/>
 
         <!--  MapperにMapperアノテーションを付与   -->
         <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
