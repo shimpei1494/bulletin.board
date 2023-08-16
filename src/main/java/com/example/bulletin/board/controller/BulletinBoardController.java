@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -46,9 +47,10 @@ public class BulletinBoardController {
     }
 
     @PostMapping("post")
-    public ModelAndView post(ModelAndView mav) {
+    public ModelAndView post(@RequestParam String content, ModelAndView mav) {
         // 処理させて完了したら編集画面に遷移し、成功メッセージ
-        mav.setViewName("redirect:/board/edit");
+        postDao.create(content);
+        mav.setViewName("redirect:/board/");
         return mav;
     }
 

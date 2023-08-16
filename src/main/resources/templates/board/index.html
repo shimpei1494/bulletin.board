@@ -9,6 +9,7 @@
 <th:block th:fragment="body-stylesheet"></th:block>
 <th:block th:fragment="body-content">
     <h1>掲示板</h1>
+    <a th:href="@{/board/new}" class="btn btn-primary">新規投稿</a>
     <p>[[${view.userName}]]</p>
     <p>[[${view.content}]]</p>
 </th:block>
