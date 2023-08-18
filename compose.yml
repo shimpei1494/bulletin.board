@@ -17,8 +17,10 @@ services:
       - mysql
     environment:
       - PMA_ARBITRARY=1
-      - PMA_HOSTS='mysql'
+      - PMA_HOSTS=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=mysql
     ports:
-      - "3000:80"
+      - "3001:80"
 volumes:
   db-data:
