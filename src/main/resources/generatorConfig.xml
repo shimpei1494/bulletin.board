@@ -51,5 +51,6 @@
 
         <!--  生成対象のテーブル -->
         <table tableName="post"  modelType="hierarchical" />
+        <table tableName="account" modelType="hierarchical" />
     </context>
 </generatorConfiguration>
