@@ -18,7 +18,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.accountDao = accountDao;
     }
 
-//    @Override
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountDao.findByUserName(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
