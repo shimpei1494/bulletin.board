@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-//@Service
-//@Transactional
+@Service
+@Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final AccountDao accountDao;
 
@@ -18,16 +18,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.accountDao = accountDao;
     }
 
-    // TODO 一旦使用しないけど残しておく
 //    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountDao.findByUserName(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
         return User.withUsername(account.getName())
                 .password(account.getPassword())
-                .roles("USER")
+                // 役割が設定
+//                .roles("USER")
                 // 無効なアカウントはログインさせない(enabledがfalseの場合、無効)
-                .disabled(!account.getEnabled())
+//                .disabled(!account.getEnabled())
                 // アカウントが有効期限が今日より過去の場合はtrueにして期限切れにする
 //                .accountExpired()
                 // パスワードの有効期限切れ

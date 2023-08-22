@@ -5,6 +5,7 @@ import com.example.bulletin.board.entity.gen.AccountExample;
 import com.example.bulletin.board.mapper.gen.AccountMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -19,8 +20,13 @@ public class AccountDao {
         AccountExample example = new AccountExample();
         var criteria = example.createCriteria();
         criteria.andNameEqualTo(name);
-        Account entity = accountMapper.selectByExample(example).get(0);
-        return Optional.ofNullable(entity);
+        // usernameがユニークだから、カスタムマッパーでユーザーネームに一致するAccountをリストじゃなくエンティティで取得した方が無駄な処理が減ってスマートになる
+        List<Account> list = accountMapper.selectByExample(example);
+        Account account = null;
+        if (list.size() == 1) {
+            account = list.get(0);
+        }
+        return Optional.ofNullable(account);
     }
 
 
