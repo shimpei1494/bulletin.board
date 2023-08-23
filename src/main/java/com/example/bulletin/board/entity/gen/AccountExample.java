@@ -395,63 +395,323 @@ public class AccountExample {
             return (Criteria) this;
         }
 
-        public Criteria andEnabledIsNull() {
-            addCriterion("enabled is null");
+        public Criteria andAuthorityIsNull() {
+            addCriterion("authority is null");
             return (Criteria) this;
         }
 
-        public Criteria andEnabledIsNotNull() {
-            addCriterion("enabled is not null");
+        public Criteria andAuthorityIsNotNull() {
+            addCriterion("authority is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEnabledEqualTo(Boolean value) {
-            addCriterion("enabled =", value, "enabled");
+        public Criteria andAuthorityEqualTo(String value) {
+            addCriterion("authority =", value, "authority");
             return (Criteria) this;
         }
 
-        public Criteria andEnabledNotEqualTo(Boolean value) {
-            addCriterion("enabled <>", value, "enabled");
+        public Criteria andAuthorityNotEqualTo(String value) {
+            addCriterion("authority <>", value, "authority");
             return (Criteria) this;
         }
 
-        public Criteria andEnabledGreaterThan(Boolean value) {
-            addCriterion("enabled >", value, "enabled");
+        public Criteria andAuthorityGreaterThan(String value) {
+            addCriterion("authority >", value, "authority");
             return (Criteria) this;
         }
 
-        public Criteria andEnabledGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("enabled >=", value, "enabled");
+        public Criteria andAuthorityGreaterThanOrEqualTo(String value) {
+            addCriterion("authority >=", value, "authority");
             return (Criteria) this;
         }
 
-        public Criteria andEnabledLessThan(Boolean value) {
-            addCriterion("enabled <", value, "enabled");
+        public Criteria andAuthorityLessThan(String value) {
+            addCriterion("authority <", value, "authority");
             return (Criteria) this;
         }
 
-        public Criteria andEnabledLessThanOrEqualTo(Boolean value) {
-            addCriterion("enabled <=", value, "enabled");
+        public Criteria andAuthorityLessThanOrEqualTo(String value) {
+            addCriterion("authority <=", value, "authority");
             return (Criteria) this;
         }
 
-        public Criteria andEnabledIn(List<Boolean> values) {
-            addCriterion("enabled in", values, "enabled");
+        public Criteria andAuthorityLike(String value) {
+            addCriterion("authority like", value, "authority");
             return (Criteria) this;
         }
 
-        public Criteria andEnabledNotIn(List<Boolean> values) {
-            addCriterion("enabled not in", values, "enabled");
+        public Criteria andAuthorityNotLike(String value) {
+            addCriterion("authority not like", value, "authority");
             return (Criteria) this;
         }
 
-        public Criteria andEnabledBetween(Boolean value1, Boolean value2) {
-            addCriterion("enabled between", value1, value2, "enabled");
+        public Criteria andAuthorityIn(List<String> values) {
+            addCriterion("authority in", values, "authority");
             return (Criteria) this;
         }
 
-        public Criteria andEnabledNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("enabled not between", value1, value2, "enabled");
+        public Criteria andAuthorityNotIn(List<String> values) {
+            addCriterion("authority not in", values, "authority");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthorityBetween(String value1, String value2) {
+            addCriterion("authority between", value1, value2, "authority");
+            return (Criteria) this;
+        }
+
+        public Criteria andAuthorityNotBetween(String value1, String value2) {
+            addCriterion("authority not between", value1, value2, "authority");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgIsNull() {
+            addCriterion("del_flg is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgIsNotNull() {
+            addCriterion("del_flg is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgEqualTo(String value) {
+            addCriterion("del_flg =", value, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgNotEqualTo(String value) {
+            addCriterion("del_flg <>", value, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgGreaterThan(String value) {
+            addCriterion("del_flg >", value, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgGreaterThanOrEqualTo(String value) {
+            addCriterion("del_flg >=", value, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgLessThan(String value) {
+            addCriterion("del_flg <", value, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgLessThanOrEqualTo(String value) {
+            addCriterion("del_flg <=", value, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgLike(String value) {
+            addCriterion("del_flg like", value, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgNotLike(String value) {
+            addCriterion("del_flg not like", value, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgIn(List<String> values) {
+            addCriterion("del_flg in", values, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgNotIn(List<String> values) {
+            addCriterion("del_flg not in", values, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgBetween(String value1, String value2) {
+            addCriterion("del_flg between", value1, value2, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andDelFlgNotBetween(String value1, String value2) {
+            addCriterion("del_flg not between", value1, value2, "delFlg");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationIsNull() {
+            addCriterion("expiration is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationIsNotNull() {
+            addCriterion("expiration is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationEqualTo(Date value) {
+            addCriterion("expiration =", value, "expiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationNotEqualTo(Date value) {
+            addCriterion("expiration <>", value, "expiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationGreaterThan(Date value) {
+            addCriterion("expiration >", value, "expiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationGreaterThanOrEqualTo(Date value) {
+            addCriterion("expiration >=", value, "expiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationLessThan(Date value) {
+            addCriterion("expiration <", value, "expiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationLessThanOrEqualTo(Date value) {
+            addCriterion("expiration <=", value, "expiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationIn(List<Date> values) {
+            addCriterion("expiration in", values, "expiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationNotIn(List<Date> values) {
+            addCriterion("expiration not in", values, "expiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationBetween(Date value1, Date value2) {
+            addCriterion("expiration between", value1, value2, "expiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andExpirationNotBetween(Date value1, Date value2) {
+            addCriterion("expiration not between", value1, value2, "expiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationIsNull() {
+            addCriterion("password_expiration is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationIsNotNull() {
+            addCriterion("password_expiration is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationEqualTo(Date value) {
+            addCriterion("password_expiration =", value, "passwordExpiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationNotEqualTo(Date value) {
+            addCriterion("password_expiration <>", value, "passwordExpiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationGreaterThan(Date value) {
+            addCriterion("password_expiration >", value, "passwordExpiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationGreaterThanOrEqualTo(Date value) {
+            addCriterion("password_expiration >=", value, "passwordExpiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationLessThan(Date value) {
+            addCriterion("password_expiration <", value, "passwordExpiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationLessThanOrEqualTo(Date value) {
+            addCriterion("password_expiration <=", value, "passwordExpiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationIn(List<Date> values) {
+            addCriterion("password_expiration in", values, "passwordExpiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationNotIn(List<Date> values) {
+            addCriterion("password_expiration not in", values, "passwordExpiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationBetween(Date value1, Date value2) {
+            addCriterion("password_expiration between", value1, value2, "passwordExpiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordExpirationNotBetween(Date value1, Date value2) {
+            addCriterion("password_expiration not between", value1, value2, "passwordExpiration");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountIsNull() {
+            addCriterion("login_failure_count is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountIsNotNull() {
+            addCriterion("login_failure_count is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountEqualTo(Integer value) {
+            addCriterion("login_failure_count =", value, "loginFailureCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountNotEqualTo(Integer value) {
+            addCriterion("login_failure_count <>", value, "loginFailureCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountGreaterThan(Integer value) {
+            addCriterion("login_failure_count >", value, "loginFailureCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("login_failure_count >=", value, "loginFailureCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountLessThan(Integer value) {
+            addCriterion("login_failure_count <", value, "loginFailureCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountLessThanOrEqualTo(Integer value) {
+            addCriterion("login_failure_count <=", value, "loginFailureCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountIn(List<Integer> values) {
+            addCriterion("login_failure_count in", values, "loginFailureCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountNotIn(List<Integer> values) {
+            addCriterion("login_failure_count not in", values, "loginFailureCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountBetween(Integer value1, Integer value2) {
+            addCriterion("login_failure_count between", value1, value2, "loginFailureCount");
+            return (Criteria) this;
+        }
+
+        public Criteria andLoginFailureCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("login_failure_count not between", value1, value2, "loginFailureCount");
             return (Criteria) this;
         }
 
