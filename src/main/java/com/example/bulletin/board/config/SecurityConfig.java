@@ -39,6 +39,9 @@ public class SecurityConfig{
 //                        .requestMatchers("/js/**").permitAll()
 //                        .requestMatchers("/webjars/**").permitAll()
                         .requestMatchers("/login", "/").permitAll()
+                                .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+                        // 上と下のhasAuthorityとhasRoleは同じ意味で権限チェックができる→権限ない場合は403エラー
+//                                .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
