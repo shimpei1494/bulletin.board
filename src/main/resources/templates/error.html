@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/layout :: layout(~{::title}, ~{::body-content}, ~{::body-scripts}, ~{::body-stylesheet})}"
+      lang="ja">
+<th:block th:fragment="title">
+    <title>エラー画面</title>
+</th:block>
+<th:block th:fragment="body-stylesheet"></th:block>
+<th:block th:fragment="body-content">
+    <h1>以下のエラーが発生しました</h1>
+    <div th:text="'timestamp: ' + ${timestamp}"></div>
+    <div th:text="'status: ' + ${status}"></div>
+    <div th:text="'error: ' + ${error}"></div>
+    <div th:text="'exception: ' + ${exception}"></div>
+    <div th:text="'message: ' + ${message}"></div>
+    <div th:text="'errors: ' + ${errors}"></div>
+    <div th:text="'trace: ' + ${trace}"></div>
+    <div th:text="'path: ' + ${path}"></div>
+</th:block>
+<th:block th:fragment="body-scripts"></th:block>
+</html>
