@@ -13,6 +13,8 @@
       <h2 class="heading">ログイン画面</h2>
       <form method="post" th:action="@{/login}">
         <p th:text="${msg}"></p>
+        <p th:if="${param.error != null and session.containsKey('SPRING_SECURITY_LAST_EXCEPTION')}"
+        th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></p>
         <label for="username" class="visually-hidden">ユーザー名</label>
         <input type="text" id="username" name="username" class="form-control" placeholder="ユーザー名">
         <label for="password" class="visually-hidden">パスワード</label>
