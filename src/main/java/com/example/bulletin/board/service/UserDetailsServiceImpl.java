@@ -45,6 +45,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .build();
     }
 
+    /**
+     * ハンドラは@EventListenerを付与したメソッドがDIコンテナに登録されればOK
+     * メソッド名はなんでも良くて、引数にどんなイベントが渡されるかでどの場合に発火するかが決まる
+     */
+
     // ログイン失敗時のハンドラ
     @EventListener
     public void loginFailureHandle(AuthenticationFailureBadCredentialsEvent event) {
