@@ -2,13 +2,11 @@ package com.example.bulletin.board.controller;
 
 import com.example.bulletin.board.dao.PostDao;
 import com.example.bulletin.board.entity.gen.Post;
+import com.example.bulletin.board.model.form.BulletinBoardPostForm;
 import com.example.bulletin.board.model.view.BoardView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -47,9 +45,12 @@ public class BulletinBoardController {
     }
 
     @PostMapping("post")
-    public ModelAndView post(@RequestParam String content, ModelAndView mav) {
+    public ModelAndView post(@ModelAttribute BulletinBoardPostForm form, ModelAndView mav) {
         // 処理させて完了したら編集画面に遷移し、成功メッセージ
-        postDao.create(content);
+        int accountId = Integer.parseInt(form.getAccountId());
+        String content = form.getContent();
+//        postDao.create(content);
+        postDao.insert(accountId, content);
         mav.setViewName("redirect:/board/");
         return mav;
     }

@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class BulletinBoardPostForm {
-    private String userName;
+    private String accountId;
     private String content;
 }

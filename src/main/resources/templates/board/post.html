@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       th:replace="~{layout/layout :: layout(~{::title}, ~{::body-content}, ~{::body-scripts}, ~{::body-stylesheet})}"
       lang="ja">
 <th:block th:fragment="title">
@@ -11,6 +12,9 @@
     <h1>掲示板</h1>
     <form method="POST" th:action="@{/board/post}">
         <div class="vstack gap-3">
+<!--   TODO 投稿者のアカウントidを受け取ってリクエストで渡したい         -->
+<!--            <span sec:authentication="principal.id"></span>-->
+            <span sec:authentication="principal.username"></span>
             <div>
                 <label for="userName" class="form-label">名前</label>
                 <input placeholder="名前" class="form-control" id="userName" name="userName" th:value="${view.userName}">
