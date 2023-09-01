@@ -22,7 +22,15 @@ public class PostDao {
     public int create(String content) {
         Post entity = new Post();
         entity.setContent(content);
-        entity.setPostUserId(3);
+//        entity.setPostUserId(3);
+        // mappperのinsertメソッドを使うとidやcreated_atなどがnullでエラーが出る
+        return postMapper.insertSelective(entity);
+    }
+
+    public int insert(int accountId, String content) {
+        Post entity = new Post();
+        entity.setPostAccountId(accountId);
+        entity.setContent(content);
         // mappperのinsertメソッドを使うとidやcreated_atなどがnullでエラーが出る
         return postMapper.insertSelective(entity);
     }

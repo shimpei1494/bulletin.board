@@ -325,63 +325,63 @@ public class PostExample {
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdIsNull() {
-            addCriterion("post_user_id is null");
+        public Criteria andPostAccountIdIsNull() {
+            addCriterion("post_account_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdIsNotNull() {
-            addCriterion("post_user_id is not null");
+        public Criteria andPostAccountIdIsNotNull() {
+            addCriterion("post_account_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdEqualTo(Integer value) {
-            addCriterion("post_user_id =", value, "postUserId");
+        public Criteria andPostAccountIdEqualTo(Integer value) {
+            addCriterion("post_account_id =", value, "postAccountId");
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdNotEqualTo(Integer value) {
-            addCriterion("post_user_id <>", value, "postUserId");
+        public Criteria andPostAccountIdNotEqualTo(Integer value) {
+            addCriterion("post_account_id <>", value, "postAccountId");
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdGreaterThan(Integer value) {
-            addCriterion("post_user_id >", value, "postUserId");
+        public Criteria andPostAccountIdGreaterThan(Integer value) {
+            addCriterion("post_account_id >", value, "postAccountId");
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("post_user_id >=", value, "postUserId");
+        public Criteria andPostAccountIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("post_account_id >=", value, "postAccountId");
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdLessThan(Integer value) {
-            addCriterion("post_user_id <", value, "postUserId");
+        public Criteria andPostAccountIdLessThan(Integer value) {
+            addCriterion("post_account_id <", value, "postAccountId");
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdLessThanOrEqualTo(Integer value) {
-            addCriterion("post_user_id <=", value, "postUserId");
+        public Criteria andPostAccountIdLessThanOrEqualTo(Integer value) {
+            addCriterion("post_account_id <=", value, "postAccountId");
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdIn(List<Integer> values) {
-            addCriterion("post_user_id in", values, "postUserId");
+        public Criteria andPostAccountIdIn(List<Integer> values) {
+            addCriterion("post_account_id in", values, "postAccountId");
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdNotIn(List<Integer> values) {
-            addCriterion("post_user_id not in", values, "postUserId");
+        public Criteria andPostAccountIdNotIn(List<Integer> values) {
+            addCriterion("post_account_id not in", values, "postAccountId");
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdBetween(Integer value1, Integer value2) {
-            addCriterion("post_user_id between", value1, value2, "postUserId");
+        public Criteria andPostAccountIdBetween(Integer value1, Integer value2) {
+            addCriterion("post_account_id between", value1, value2, "postAccountId");
             return (Criteria) this;
         }
 
-        public Criteria andPostUserIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("post_user_id not between", value1, value2, "postUserId");
+        public Criteria andPostAccountIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("post_account_id not between", value1, value2, "postAccountId");
             return (Criteria) this;
         }
 
