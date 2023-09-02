@@ -15,10 +15,6 @@
 <!--   TODO 投稿者のアカウントidを受け取ってリクエストで渡したい         -->
             <span sec:authentication="principal.username"></span>
             <div>
-                <label for="userName" class="form-label">名前</label>
-                <input placeholder="名前" class="form-control" id="userName" name="userName" th:value="${view.userName}">
-            </div>
-            <div>
                 <label for="content" class="form-label">投稿内容</label>
                 <textarea class="form-control" id="content" rows="5" cols="80" wrap="off" name="content" th:value="${view.content}"></textarea>
             </div>
