@@ -1,13 +1,22 @@
 package com.example.bulletin.board.controller;
 
+import com.example.bulletin.board.dao.AccountDao;
 import com.example.bulletin.board.dao.PostDao;
+import com.example.bulletin.board.entity.gen.Account;
 import com.example.bulletin.board.entity.gen.Post;
 import com.example.bulletin.board.model.form.BulletinBoardPostForm;
 import com.example.bulletin.board.model.view.BoardView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/board")
@@ -16,6 +25,9 @@ public class BulletinBoardController {
     @Autowired
     private PostDao postDao;
 
+    @Autowired
+    private AccountDao accountDao;
+
     public BulletinBoardController() {
     }
 
@@ -23,6 +35,7 @@ public class BulletinBoardController {
     public ModelAndView index(ModelAndView mav) {
         mav.setViewName("board/index");
         var view = new BoardView();
+        // TODO　既存の1データしか取得する実装になっていないのでカスタムマッパーで掲示板のデータを全て取得する
         Post entity = postDao.selectPk(3);
         view.setUserName("ooshita");
         view.setContent(entity.getContent());
@@ -45,12 +58,18 @@ public class BulletinBoardController {
     }
 
     @PostMapping("post")
-    public ModelAndView post(@ModelAttribute BulletinBoardPostForm form, ModelAndView mav) {
-        // 処理させて完了したら編集画面に遷移し、成功メッセージ
-        int accountId = Integer.parseInt(form.getAccountId());
+    public ModelAndView post(@ModelAttribute BulletinBoardPostForm form,
+                             @AuthenticationPrincipal UserDetails userDetails,
+                             ModelAndView mav) {
+        // ユーザー名を基にDBからアカウント情報を取得
+        Optional<Account> account = accountDao.findByUserName(userDetails.getUsername());
+        // アカウントが存在すればアカウントIDを設定し、存在しなければ-1とする
+        int accountId = account.map(Account::getId).orElse(-1);
         String content = form.getContent();
-//        postDao.create(content);
-        postDao.insert(accountId, content);
+        int result = 0;
+        if (accountId != -1) {
+            result = postDao.insert(accountId, content);
+        }
         mav.setViewName("redirect:/board/");
         return mav;
     }

@@ -13,7 +13,6 @@
     <form method="POST" th:action="@{/board/post}">
         <div class="vstack gap-3">
 <!--   TODO 投稿者のアカウントidを受け取ってリクエストで渡したい         -->
-<!--            <span sec:authentication="principal.id"></span>-->
             <span sec:authentication="principal.username"></span>
             <div>
                 <label for="userName" class="form-label">名前</label>
