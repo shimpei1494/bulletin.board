@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/layout :: layout(~{::title}, ~{::body-content}, ~{::body-scripts}, ~{::body-stylesheet})}"
+      lang="ja">
+<th:block th:fragment="title">
+    <title>リクエストParam確認</title>
+</th:block>
+<th:block th:fragment="body-stylesheet"></th:block>
+<th:block th:fragment="body-content">
+    <h1>リクエストParam確認結果</h1>
+    <p th:text="${message}"></p>
+</th:block>
+<th:block th:fragment="body-scripts"></th:block>
+</html>

@@ -17,7 +17,7 @@
 <body>
     <div>
         <th:block th:replace="~{/parts/header}" />
-        <div class="container py-3">
+        <div class="container py-3" id="content" >
             <th:block th:replace="${body}" />
         </div>
         <th:block th:replace="~{/parts/footer}" />

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/layout :: layout(~{::title}, ~{::body-content}, ~{::body-scripts}, ~{::body-stylesheet})}"
+      lang="ja">
+<th:block th:fragment="title">
+    <title>リクエストParam確認</title>
+</th:block>
+<th:block th:fragment="body-stylesheet"></th:block>
+<th:block th:fragment="body-content">
+    <h1>リクエストParam確認</h1>
+    <p>いろんなリクエストパラメータの受け取り方を記載します</p>
+    <div class="vstack gap-3">
+        <form method="POST" th:action="@{/request/action1}" class="bg-primary p-3">
+            <h3>@RequestParamを使用</h3>
+            <div class="vstack gap-3">
+                <div>
+                    <label for="like" class="form-label">好きなもの</label>
+                    <input class="form-control" id="like" name="like" value="好き">
+                </div>
+                <div>
+                    <label for="unlike" class="form-label">嫌いなもの</label>
+                    <input class="form-control" id="unlike" name="unlike" value="嫌い">
+                </div>
+                <div>
+                    <input type="submit" value="送信">
+                </div>
+            </div>
+        </form>
+        <div class="bg-light p-3">
+            <a th:href="@{/request/action2/Pathvariableのテスト}">Pathvariableのテスト</a>
+        </div>
+        <form method="POST" th:action="@{/request/action3}" class="bg-warning p-3">
+            <h3>Formクラスを使用</h3>
+            <div class="vstack gap-3">
+                <div>
+                    <label for="food" class="form-label">食べ物</label>
+                    <input class="form-control" id="food" name="food" value="りんご">
+                </div>
+                <div>
+                    <label for="trip" class="form-label">旅行先</label>
+                    <input class="form-control" id="trip" name="trip" value="イタリア">
+                </div>
+                <div>
+                    <input type="submit" value="送信">
+                </div>
+            </div>
+        </form>
+        <form method="POST" th:action="@{/request/action4}" class="bg-success p-3">
+            <h3>HttpServletRequestを使用</h3>
+            <div class="vstack gap-3">
+                <div>
+                    <label for="name" class="form-label">名前</label>
+                    <input class="form-control" id="name" name="name" value="山田">
+                </div>
+                <div>
+                    <input type="submit" value="送信">
+                </div>
+            </div>
+        </form>
+    </div>
+</th:block>
+<th:block th:fragment="body-scripts"></th:block>
+</html>
