@@ -2,10 +2,7 @@ package com.example.bulletin.board.dao;
 
 import com.example.bulletin.board.entity.CustomPostEntity;
 import com.example.bulletin.board.entity.CustomPostExample;
-import com.example.bulletin.board.entity.gen.Post;
-import com.example.bulletin.board.entity.gen.PostKey;
 import com.example.bulletin.board.mapper.CustomPostMapper;
-import com.example.bulletin.board.mapper.gen.PostMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
