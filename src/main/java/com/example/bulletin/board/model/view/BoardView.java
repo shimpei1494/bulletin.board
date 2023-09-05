@@ -1,12 +1,11 @@
 package com.example.bulletin.board.model.view;
 
+import com.example.bulletin.board.entity.CustomPostEntity;
 import lombok.Data;
 
-import java.util.Date;
+import java.util.List;
 
 @Data
 public class BoardView {
-    private String userName;
-    private String content;
-    private Date publishDate;
+    private List<CustomPostEntity> list;
 }

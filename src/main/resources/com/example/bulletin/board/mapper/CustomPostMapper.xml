@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bulletin.board.mapper.CustomPostMapper">
+    <resultMap id="CustomPostEntity" type="com.example.bulletin.board.entity.CustomPostEntity">
+        <!--  columnにはDBのカラム名、propertyには受け取るJavaクラスのフィールド名を指定   -->
+        <result column="CONTENT" jdbcType="VARCHAR" property="content" />
+        <result column="POST_ACCOUNT_ID" jdbcType="INTEGER" property="postAccountId" />
+        <result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="postAccountName" />
+    </resultMap>
+    <select flushCache="true" useCache="false" id="selectPostList" resultType="map" resultMap="CustomPostEntity">
+        SELECT
+            P.CONTENT,
+            P.POST_ACCOUNT_ID,
+            A.NAME AS ACCOUNT_NAME
+        FROM POST P
+        LEFT JOIN ACCOUNT A
+            ON P.POST_ACCOUNT_ID = A.ID
+<!--        WHERE-->
+<!--        <if test="example.searchWord != null and example.searchWord != ''">-->
+<!--            CONTENT LIKE CONCAT('%', #{example.searchWord}, '%')-->
+<!--        </if>-->
+    </select>
+</mapper>

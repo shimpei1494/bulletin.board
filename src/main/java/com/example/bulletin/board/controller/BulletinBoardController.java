@@ -2,8 +2,8 @@ package com.example.bulletin.board.controller;
 
 import com.example.bulletin.board.dao.AccountDao;
 import com.example.bulletin.board.dao.PostDao;
+import com.example.bulletin.board.entity.CustomPostEntity;
 import com.example.bulletin.board.entity.gen.Account;
-import com.example.bulletin.board.entity.gen.Post;
 import com.example.bulletin.board.model.form.BulletinBoardPostForm;
 import com.example.bulletin.board.model.view.BoardView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -36,9 +37,9 @@ public class BulletinBoardController {
         mav.setViewName("board/index");
         var view = new BoardView();
         // TODO　既存の1データしか取得する実装になっていないのでカスタムマッパーで掲示板のデータを全て取得する
-        Post entity = postDao.selectPk(3);
-        view.setUserName("ooshita");
-        view.setContent(entity.getContent());
+        String searchWord = "";
+        List<CustomPostEntity> list = postDao.getPostList(searchWord);
+        view.setList(list);
         mav.addObject("view", view);
         return mav;
     }

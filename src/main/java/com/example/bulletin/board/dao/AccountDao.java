@@ -2,7 +2,6 @@ package com.example.bulletin.board.dao;
 
 import com.example.bulletin.board.entity.gen.Account;
 import com.example.bulletin.board.entity.gen.AccountExample;
-import com.example.bulletin.board.entity.gen.AccountKey;
 import com.example.bulletin.board.mapper.gen.AccountMapper;
 import org.springframework.stereotype.Component;
 

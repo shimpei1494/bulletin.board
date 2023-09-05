@@ -50,7 +50,7 @@
         />
 
         <!--  生成対象のテーブル -->
-        <table tableName="post"  modelType="hierarchical" />
-        <table tableName="account" modelType="hierarchical" />
+        <table tableName="POST"  modelType="hierarchical" />
+        <table tableName="ACCOUNT" modelType="hierarchical" />
     </context>
 </generatorConfiguration>
