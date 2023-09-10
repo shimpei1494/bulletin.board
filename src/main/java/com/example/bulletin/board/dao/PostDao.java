@@ -27,14 +27,6 @@ public class PostDao {
         return postMapper.selectByPrimaryKey(key);
     }
 
-    public int create(String content) {
-        Post entity = new Post();
-        entity.setContent(content);
-//        entity.setPostUserId(3);
-        // mappperのinsertメソッドを使うとidやcreated_atなどがnullでエラーが出る
-        return postMapper.insertSelective(entity);
-    }
-
     public int insert(int accountId, String content) {
         Post entity = new Post();
         entity.setPostAccountId(accountId);
@@ -49,6 +41,13 @@ public class PostDao {
         example.setSearchWord(searchWord);
 
         return customPostMapper.selectPostList(example);
+    }
+
+    public int update(Integer editPostId, String content) {
+        Post entity = new Post();
+        entity.setId(editPostId);
+        entity.setContent(content);
+        return postMapper.updateByPrimaryKeySelective(entity);
     }
 
 }

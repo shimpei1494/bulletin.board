@@ -1,14 +1,13 @@
 package com.example.bulletin.board.controller;
 
-import com.example.bulletin.board.dao.AccountDao;
-import com.example.bulletin.board.dao.PostDao;
 import com.example.bulletin.board.entity.CustomPostEntity;
 import com.example.bulletin.board.entity.gen.Post;
+import com.example.bulletin.board.logic.PostCreateLogic;
+import com.example.bulletin.board.logic.PostUpdateLogic;
 import com.example.bulletin.board.model.form.BulletinBoardPostForm;
 import com.example.bulletin.board.model.view.BoardView;
 import com.example.bulletin.board.service.AccountService;
 import com.example.bulletin.board.service.BulletinBoardService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -21,19 +20,19 @@ import java.util.List;
 @RequestMapping("/board")
 public class BulletinBoardController {
 
-    @Autowired
-    private PostDao postDao;
-
-    @Autowired
-    private AccountDao accountDao;
-
     private BulletinBoardService bulletinBoardService;
 
     private AccountService accountService;
 
-    public BulletinBoardController(BulletinBoardService bulletinBoardService, AccountService accountService) {
+    private PostCreateLogic postCreateLogic;
+
+    private PostUpdateLogic postUpdateLogic;
+
+    public BulletinBoardController(BulletinBoardService bulletinBoardService, AccountService accountService, PostCreateLogic postCreateLogic, PostUpdateLogic postUpdateLogic) {
         this.bulletinBoardService = bulletinBoardService;
         this.accountService = accountService;
+        this.postCreateLogic = postCreateLogic;
+        this.postUpdateLogic = postUpdateLogic;
     }
 
     @GetMapping("/")
@@ -68,19 +67,41 @@ public class BulletinBoardController {
         return mav;
     }
 
+    // 新規作成または更新時
     @PostMapping("post")
     public ModelAndView post(@ModelAttribute BulletinBoardPostForm form,
                              @AuthenticationPrincipal UserDetails userDetails,
                              ModelAndView mav) {
-        String name = userDetails.getUsername();
+        // リクエストパラメータの解析
+        Integer postId = form.getPostId();
         String content = form.getContent();
+        String name = userDetails.getUsername();
 
-        int accountId = accountService.getAccountIdByAccountName(name);
         int result = 0;
-        if (accountId != -1) {
-            result = bulletinBoardService.createPost(accountId, content);
+        String successMsg;
+        String errorMsg;
+
+        if (postId == null) {
+            // 新規作成時
+            result = postCreateLogic.execute(content, name);
+            successMsg = "データの登録に成功しました";
+            errorMsg = "データの登録に失敗しました";
+        } else {
+            // 更新時
+            result = postUpdateLogic.execute(postId, content);
+            successMsg = "データの更新に成功しました";
+            errorMsg = "データの更新に失敗しました";
         }
-        mav.setViewName("redirect:/board/");
+
+
+        if (result == 1) {
+            mav.addObject("successMsg", successMsg);
+        } else {
+            mav.addObject("errorMsg", errorMsg);
+        }
+        mav.addObject("form", form);
+        mav.setViewName("board/post");
+
         return mav;
     }
 

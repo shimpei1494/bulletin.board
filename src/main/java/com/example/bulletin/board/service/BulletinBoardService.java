@@ -28,6 +28,10 @@ public class BulletinBoardService {
         return postDao.insert(accountId, content);
     }
 
+    public int updatePost(int editPostId, String content) {
+        return postDao.update(editPostId, content);
+    }
+
 
 
 
