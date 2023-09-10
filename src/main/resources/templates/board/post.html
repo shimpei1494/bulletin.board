@@ -19,7 +19,7 @@
                     <textarea class="form-control" id="content" rows="5" cols="80" wrap="soft" name="content" >[[${form.content}]]</textarea>
                 </div>
                 <div>
-                    <p th:text="${form.postId}"></p>
+                <!--  新規投稿時は送信、編集時は更新ボタンを表示する  -->
                     <th:block th:if="${#strings.isEmpty(form.postId)}">
                         <input type="submit" value="送信" >
                     </th:block>
