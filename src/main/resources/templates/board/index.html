@@ -10,9 +10,13 @@
 <th:block th:fragment="body-content">
     <h1>掲示板</h1>
     <a th:href="@{/board/new}" class="btn btn-primary">新規投稿</a>
-    <div th:each="post : ${view.list}" >
-        <p>[[${post.postAccountName}]]</p>
-        <p>[[${post.content}]]</p>
+    <div class="vstack gap-3 mt-3">
+        <div th:each="post : ${view.list}" class="border border-info" >
+            <p>投稿者：[[${post.postAccountName}]]</p>
+            <p>投稿内容：[[${post.content}]]</p>
+            <!--   リンク式でmodelのパラメータを使う時は以下のような感じ     -->
+            <a th:href="@{'/board/edit/' + ${post.postId}}">編集画面へ</a>
+        </div>
     </div>
 </th:block>
 <th:block th:fragment="body-scripts"></th:block>

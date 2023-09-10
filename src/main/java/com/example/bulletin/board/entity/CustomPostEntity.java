@@ -6,7 +6,9 @@ import lombok.Data;
 public class CustomPostEntity {
     private String content;
 
-    private String postAccountId;
+    private Integer postId;
+
+    private Integer postAccountId;
 
     private String postAccountName;
 }

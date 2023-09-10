@@ -3,12 +3,14 @@
 <mapper namespace="com.example.bulletin.board.mapper.CustomPostMapper">
     <resultMap id="CustomPostEntity" type="com.example.bulletin.board.entity.CustomPostEntity">
         <!--  columnにはDBのカラム名、propertyには受け取るJavaクラスのフィールド名を指定   -->
+        <result column="ID" jdbcType="INTEGER" property="postId" />
         <result column="CONTENT" jdbcType="VARCHAR" property="content" />
         <result column="POST_ACCOUNT_ID" jdbcType="INTEGER" property="postAccountId" />
         <result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="postAccountName" />
     </resultMap>
     <select flushCache="true" useCache="false" id="selectPostList" resultType="map" resultMap="CustomPostEntity">
         SELECT
+            P.ID,
             P.CONTENT,
             P.POST_ACCOUNT_ID,
             A.NAME AS ACCOUNT_NAME

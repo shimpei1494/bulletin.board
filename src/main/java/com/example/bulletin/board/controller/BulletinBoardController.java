@@ -3,6 +3,7 @@ package com.example.bulletin.board.controller;
 import com.example.bulletin.board.dao.AccountDao;
 import com.example.bulletin.board.dao.PostDao;
 import com.example.bulletin.board.entity.CustomPostEntity;
+import com.example.bulletin.board.entity.gen.Post;
 import com.example.bulletin.board.model.form.BulletinBoardPostForm;
 import com.example.bulletin.board.model.view.BoardView;
 import com.example.bulletin.board.service.AccountService;
@@ -11,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -54,12 +52,18 @@ public class BulletinBoardController {
     @GetMapping("/new")
     public ModelAndView create(ModelAndView mav) {
         mav.setViewName("board/post");
-        mav.addObject("view", new BulletinBoardPostForm());
+        mav.addObject("form", new BulletinBoardPostForm());
         return mav;
     }
 
-    @GetMapping("edit")
-    public ModelAndView edit(ModelAndView mav) {
+    @GetMapping("edit/{postId}")
+    public ModelAndView edit(@PathVariable Integer postId, ModelAndView mav) {
+        // idから既存のデータを取得して編集画面に遷移
+        Post post = bulletinBoardService.getPostById(postId);
+        BulletinBoardPostForm form = new BulletinBoardPostForm();
+        form.setPostId(postId);
+        form.setContent(post.getContent());
+        mav.addObject("form", form);
         mav.setViewName("board/post");
         return mav;
     }
