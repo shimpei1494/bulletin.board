@@ -10,6 +10,14 @@
 <th:block th:fragment="body-content">
     <h1>掲示板</h1>
     <a th:href="@{/board/new}" class="btn btn-primary">新規投稿</a>
+    <div class="mt-3">
+        <form th:action="@{/board/}" method="get">
+            <!-- コントローラでmodelにformを追加しなくても、以下のようにformオブジェクトを受け取れる-->
+            <!-- Spring徹底入門 162p参照 -->
+            <input type="text" name="searchWord" placeholder="投稿内容の検索" th:value="${boardIndexForm.searchWord}">
+            <input type="submit">
+        </form>
+    </div>
     <div class="vstack gap-3 mt-3">
         <div th:each="post : ${view.list}" class="border border-info" >
             <p>投稿者：[[${post.postAccountName}]]</p>

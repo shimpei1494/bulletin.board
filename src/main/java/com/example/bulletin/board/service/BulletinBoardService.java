@@ -3,6 +3,7 @@ package com.example.bulletin.board.service;
 import com.example.bulletin.board.dao.PostDao;
 import com.example.bulletin.board.entity.CustomPostEntity;
 import com.example.bulletin.board.entity.gen.Post;
+import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class BulletinBoardService {
     }
 
     // 掲示板一覧取得メソッド
-    public List<CustomPostEntity> getPostList(String searchWord) {
+    public List<CustomPostEntity> getPostList(@Nullable String searchWord) {
         return postDao.getPostList(searchWord);
     }
 

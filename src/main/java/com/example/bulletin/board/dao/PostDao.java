@@ -6,6 +6,7 @@ import com.example.bulletin.board.entity.gen.Post;
 import com.example.bulletin.board.entity.gen.PostKey;
 import com.example.bulletin.board.mapper.CustomPostMapper;
 import com.example.bulletin.board.mapper.gen.PostMapper;
+import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class PostDao {
         return postMapper.insertSelective(entity);
     }
 
-    public List<CustomPostEntity> getPostList(String searchWord) {
+    public List<CustomPostEntity> getPostList(@Nullable String searchWord) {
         // example（条件）を作成する
         final CustomPostExample example = new CustomPostExample();
         example.setSearchWord(searchWord);

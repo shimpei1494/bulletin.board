@@ -17,9 +17,9 @@
         FROM POST P
         LEFT JOIN ACCOUNT A
             ON P.POST_ACCOUNT_ID = A.ID
-<!--        WHERE-->
-<!--        <if test="example.searchWord != null and example.searchWord != ''">-->
-<!--            CONTENT LIKE CONCAT('%', #{example.searchWord}, '%')-->
-<!--        </if>-->
+        <if test="example.searchWord != null and example.searchWord != ''">
+        WHERE
+            CONTENT LIKE CONCAT('%', #{example.searchWord}, '%')
+        </if>
     </select>
 </mapper>

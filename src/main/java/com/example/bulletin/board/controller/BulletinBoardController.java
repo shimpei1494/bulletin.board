@@ -4,6 +4,7 @@ import com.example.bulletin.board.entity.CustomPostEntity;
 import com.example.bulletin.board.entity.gen.Post;
 import com.example.bulletin.board.logic.PostCreateLogic;
 import com.example.bulletin.board.logic.PostUpdateLogic;
+import com.example.bulletin.board.model.form.BoardIndexForm;
 import com.example.bulletin.board.model.form.BulletinBoardPostForm;
 import com.example.bulletin.board.model.view.BoardView;
 import com.example.bulletin.board.service.AccountService;
@@ -22,26 +23,26 @@ public class BulletinBoardController {
 
     private BulletinBoardService bulletinBoardService;
 
-    private AccountService accountService;
-
     private PostCreateLogic postCreateLogic;
 
     private PostUpdateLogic postUpdateLogic;
 
-    public BulletinBoardController(BulletinBoardService bulletinBoardService, AccountService accountService, PostCreateLogic postCreateLogic, PostUpdateLogic postUpdateLogic) {
+    public BulletinBoardController(BulletinBoardService bulletinBoardService, PostCreateLogic postCreateLogic, PostUpdateLogic postUpdateLogic) {
         this.bulletinBoardService = bulletinBoardService;
-        this.accountService = accountService;
         this.postCreateLogic = postCreateLogic;
         this.postUpdateLogic = postUpdateLogic;
     }
 
     @GetMapping("/")
-    public ModelAndView index(ModelAndView mav) {
-        mav.setViewName("board/index");
+    public ModelAndView index(BoardIndexForm form, ModelAndView mav) {
         var view = new BoardView();
-        // TODO　既存の1データしか取得する実装になっていないのでカスタムマッパーで掲示板のデータを全て取得する
-        String searchWord = "";
+        // リクエストパラメータの取得
+        String searchWord = form.getSearchWord();
+
+        // 掲示板リストの取得
         List<CustomPostEntity> list = bulletinBoardService.getPostList(searchWord);
+
+        mav.setViewName("board/index");
         view.setList(list);
         mav.addObject("view", view);
         return mav;
