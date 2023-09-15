@@ -17,8 +17,13 @@ public class BulletinBoardService {
     }
 
     // 掲示板一覧取得メソッド
-    public List<CustomPostEntity> getPostList(@Nullable String searchWord) {
-        return postDao.getPostList(searchWord);
+    public List<CustomPostEntity> getPostList(@Nullable String searchWord, Integer limit, Integer offset) {
+        return postDao.getPostList(searchWord, limit, offset);
+    }
+
+    // 掲示板投稿数取得メソッド
+    public int countByExample(@Nullable String searchWord) {
+        return postDao.countByExample(searchWord);
     }
 
     public Post getPostById(Integer id) {

@@ -8,6 +8,19 @@
         <result column="POST_ACCOUNT_ID" jdbcType="INTEGER" property="postAccountId" />
         <result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="postAccountName" />
     </resultMap>
+
+    <select flushCache="true" useCache="false" id="countByExample" resultType="int" parameterType="map">
+        SELECT
+            COUNT(*) AS COUNT
+        FROM POST P
+        LEFT JOIN ACCOUNT A
+            ON P.POST_ACCOUNT_ID = A.ID
+        <if test="example.searchWord != null and example.searchWord != ''">
+        WHERE
+            CONTENT LIKE CONCAT('%', #{example.searchWord}, '%')
+        </if>
+    </select>
+
     <select flushCache="true" useCache="false" id="selectPostList" resultType="map" resultMap="CustomPostEntity">
         SELECT
             P.ID,
@@ -21,5 +34,13 @@
         WHERE
             CONTENT LIKE CONCAT('%', #{example.searchWord}, '%')
         </if>
+        ORDER BY P.ID DESC
+        <if test="example.limit != null">
+            LIMIT #{example.limit}
+            <if test="example.offset != null">
+                OFFSET #{example.offset}
+            </if>
+        </if>
+
     </select>
 </mapper>

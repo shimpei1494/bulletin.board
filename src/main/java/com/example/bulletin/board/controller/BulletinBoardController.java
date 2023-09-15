@@ -1,20 +1,19 @@
 package com.example.bulletin.board.controller;
 
-import com.example.bulletin.board.entity.CustomPostEntity;
 import com.example.bulletin.board.entity.gen.Post;
 import com.example.bulletin.board.logic.CreatePostLogic;
+import com.example.bulletin.board.logic.GetPostListLogic;
 import com.example.bulletin.board.logic.UpdatePostLogic;
 import com.example.bulletin.board.model.form.BoardIndexForm;
 import com.example.bulletin.board.model.form.BulletinBoardPostForm;
 import com.example.bulletin.board.model.view.BoardView;
 import com.example.bulletin.board.service.BulletinBoardService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/board")
@@ -22,29 +21,26 @@ public class BulletinBoardController {
 
     private BulletinBoardService bulletinBoardService;
 
+    private GetPostListLogic getPostListLogic;
+
     private CreatePostLogic createPostLogic;
 
     private UpdatePostLogic updatePostLogic;
 
-    public BulletinBoardController(BulletinBoardService bulletinBoardService, CreatePostLogic createPostLogic, UpdatePostLogic updatePostLogic) {
+    public BulletinBoardController(BulletinBoardService bulletinBoardService,GetPostListLogic getPostListLogic, CreatePostLogic createPostLogic, UpdatePostLogic updatePostLogic) {
         this.bulletinBoardService = bulletinBoardService;
+        this.getPostListLogic = getPostListLogic;
         this.createPostLogic = createPostLogic;
         this.updatePostLogic = updatePostLogic;
     }
 
     @GetMapping("/")
-    public ModelAndView index(BoardIndexForm form, ModelAndView mav) {
-        var view = new BoardView();
-        // リクエストパラメータの取得
-        String searchWord = form.getSearchWord();
+    public ModelAndView index(HttpServletRequest req, BoardIndexForm form, ModelAndView mav) {
 
-
-
-        // 掲示板リストの取得
-        List<CustomPostEntity> list = bulletinBoardService.getPostList(searchWord);
+        form.setUrl(req);
+        BoardView view = getPostListLogic.execute(form);
 
         mav.setViewName("board/index");
-        view.setList(list);
         mav.addObject("view", view);
         return mav;
     }

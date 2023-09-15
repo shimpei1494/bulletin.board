@@ -36,10 +36,19 @@ public class PostDao {
         return postMapper.insertSelective(entity);
     }
 
-    public List<CustomPostEntity> getPostList(@Nullable String searchWord) {
+    public int countByExample(@Nullable String searchWord) {
         // example（条件）を作成する
         final CustomPostExample example = new CustomPostExample();
         example.setSearchWord(searchWord);
+        return customPostMapper.countByExample(example);
+    }
+
+    public List<CustomPostEntity> getPostList(@Nullable String searchWord, Integer limit, Integer offset) {
+        // example（条件）を作成する
+        final CustomPostExample example = new CustomPostExample();
+        example.setSearchWord(searchWord);
+        example.setLimit(limit);
+        example.setOffset(offset);
 
         return customPostMapper.selectPostList(example);
     }

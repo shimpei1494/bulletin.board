@@ -1,0 +1,22 @@
+<div th:if="${pager != null && pager.totalCount > 0}" th:with="pageId=${#ctx.containsVariable('pageId') ? pageId : ''}">
+  <th:block th:if="${pager.prev}">
+    <a th:href="${pager.firstPageUrl + pageId}"><i class="bi bi-chevron-double-left"></i></a>
+    <a th:href="${pager.prevPageUrl + pageId}"><i class="bi bi-chevron-left"></i></a>
+  </th:block>
+  <th:block th:unless="${pager.prev}">
+    <a><i class="bi bi-chevron-double-left"></i></a>
+    <a><i class="bi bi-chevron-left"></i></a>
+  </th:block>
+  <th:block th:each="pageNo :${pager.showPageList}">
+    <!-- TODO 現在のページの表示を変える -->
+    <a th:href="${pager.baseUrl + pageNo + pageId}" th:text="${pageNo}"></a>
+  </th:block>
+  <th:block th:if="${pager.next}">
+    <a th:href="${pager.nextPageUrl + pageId}"><i class="bi bi-chevron-right"></i></a>
+    <a th:href="${pager.lastPageUrl + pageId}"><i class="bi bi-chevron-double-right"></i></a>
+  </th:block>
+  <th:block th:unless="${pager.next}">
+    <a><i class="bi bi-chevron-right"></i></a>
+    <a><i class="bi bi-chevron-double-right"></i></a>
+  </th:block>
+</div>

@@ -29,6 +29,9 @@
             </th:block>
         </div>
     </div>
+    <div th:with="pager=${view.pager}">
+        <th:block th:replace="~{/parts/pager}" ></th:block>
+    </div>
 </th:block>
 <th:block th:fragment="body-scripts"></th:block>
 </html>

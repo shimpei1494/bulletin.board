@@ -10,5 +10,8 @@ import java.util.List;
 
 @Mapper
 public interface CustomPostMapper {
+
+    int countByExample(@NonNull @Param("example")CustomPostExample example);
+
     List<CustomPostEntity> selectPostList(@NonNull @Param("example")CustomPostExample example);
 }
