@@ -2,12 +2,11 @@ package com.example.bulletin.board.controller;
 
 import com.example.bulletin.board.entity.CustomPostEntity;
 import com.example.bulletin.board.entity.gen.Post;
-import com.example.bulletin.board.logic.PostCreateLogic;
-import com.example.bulletin.board.logic.PostUpdateLogic;
+import com.example.bulletin.board.logic.CreatePostLogic;
+import com.example.bulletin.board.logic.UpdatePostLogic;
 import com.example.bulletin.board.model.form.BoardIndexForm;
 import com.example.bulletin.board.model.form.BulletinBoardPostForm;
 import com.example.bulletin.board.model.view.BoardView;
-import com.example.bulletin.board.service.AccountService;
 import com.example.bulletin.board.service.BulletinBoardService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,14 +22,14 @@ public class BulletinBoardController {
 
     private BulletinBoardService bulletinBoardService;
 
-    private PostCreateLogic postCreateLogic;
+    private CreatePostLogic createPostLogic;
 
-    private PostUpdateLogic postUpdateLogic;
+    private UpdatePostLogic updatePostLogic;
 
-    public BulletinBoardController(BulletinBoardService bulletinBoardService, PostCreateLogic postCreateLogic, PostUpdateLogic postUpdateLogic) {
+    public BulletinBoardController(BulletinBoardService bulletinBoardService, CreatePostLogic createPostLogic, UpdatePostLogic updatePostLogic) {
         this.bulletinBoardService = bulletinBoardService;
-        this.postCreateLogic = postCreateLogic;
-        this.postUpdateLogic = postUpdateLogic;
+        this.createPostLogic = createPostLogic;
+        this.updatePostLogic = updatePostLogic;
     }
 
     @GetMapping("/")
@@ -38,6 +37,8 @@ public class BulletinBoardController {
         var view = new BoardView();
         // リクエストパラメータの取得
         String searchWord = form.getSearchWord();
+
+
 
         // 掲示板リストの取得
         List<CustomPostEntity> list = bulletinBoardService.getPostList(searchWord);
@@ -84,12 +85,12 @@ public class BulletinBoardController {
 
         if (postId == null) {
             // 新規作成時
-            result = postCreateLogic.execute(content, name);
+            result = createPostLogic.execute(content, name);
             successMsg = "データの登録に成功しました";
             errorMsg = "データの登録に失敗しました";
         } else {
             // 更新時
-            result = postUpdateLogic.execute(postId, content);
+            result = updatePostLogic.execute(postId, content);
             successMsg = "データの更新に成功しました";
             errorMsg = "データの更新に失敗しました";
         }

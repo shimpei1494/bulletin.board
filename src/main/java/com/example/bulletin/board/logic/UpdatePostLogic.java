@@ -4,11 +4,11 @@ import com.example.bulletin.board.service.BulletinBoardService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PostUpdateLogic {
+public class UpdatePostLogic {
     private BulletinBoardService bulletinBoardService;
 
 
-    public PostUpdateLogic(BulletinBoardService bulletinBoardService) {
+    public UpdatePostLogic(BulletinBoardService bulletinBoardService) {
         this.bulletinBoardService = bulletinBoardService;
     }
 

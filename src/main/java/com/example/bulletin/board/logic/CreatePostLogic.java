@@ -5,12 +5,12 @@ import com.example.bulletin.board.service.BulletinBoardService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PostCreateLogic {
+public class CreatePostLogic {
     private BulletinBoardService bulletinBoardService;
 
     private AccountService accountService;
 
-    public PostCreateLogic(BulletinBoardService bulletinBoardService, AccountService accountService) {
+    public CreatePostLogic(BulletinBoardService bulletinBoardService, AccountService accountService) {
         this.bulletinBoardService = bulletinBoardService;
         this.accountService = accountService;
     }
