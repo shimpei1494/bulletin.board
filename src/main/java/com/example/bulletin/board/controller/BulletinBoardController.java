@@ -73,6 +73,7 @@ public class BulletinBoardController {
         // リクエストパラメータの解析
         Integer postId = form.getPostId();
         String content = form.getContent();
+        // ログインユーザー情報の取得
         String name = userDetails.getUsername();
 
         int result = 0;

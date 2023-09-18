@@ -28,9 +28,12 @@ public class GetPostListLogic {
 
         String searchWord = form.getSearchWord();
 
+        // 件数の取得
         int count = bulletinBoardService.countByExample(searchWord);
 
+        // クエリパラメータの作成
         String queryString = createQueryString(form);
+        // ページャーの作成
         view.setPager(pager.createPager(form.getUrl(), form.getPage(), count, queryString));
 
         // 0件の場合処理を終了する

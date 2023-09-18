@@ -24,6 +24,7 @@ public class PagerComponent {
         this.pageSize = PAGE_SIZE;
     }
 
+    // コンストラクタで1ページあたりの表示数、一度に表示するページリンク数を指定する
     public PagerComponent(int numberPerPage, int pageSize) {
         this.numberPerPage = numberPerPage;
         this.pageSize = pageSize;
