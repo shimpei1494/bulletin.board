@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/layout :: layout(~{::title}, ~{::body-content}, ~{::body-scripts}, ~{::body-stylesheet})}"
+      lang="ja">
+<th:block th:fragment="title">
+    <title>バインディング確認</title>
+</th:block>
+<th:block th:fragment="body-stylesheet"></th:block>
+<th:block th:fragment="body-content">
+    <h1>バインディング確認</h1>
+    <div class="vstack gap-3">
+        <form method="POST" th:action="@{/bind/check1}" class="bg-warning p-3">
+            <h3>基本的な型変換</h3>
+            <div class="vstack gap-3">
+                <div><input class="form-control" type="number" name="id" value="5"></div>
+                <div><input class="form-control" type="text" name="money" value="300"></div>
+                <div><input class="form-control" type="text" name="content" value="お疲れさま"></div>
+                <div><input class="form-control" type="date" name="date" value="2023-09-20"></div>
+                <div><input class="form-control" type="email" name="email" value="test@com"></div>
+                <div><input type="radio" name="bool" value="true" checked>true</div>
+                <div><input type="radio" name="bool" value="false">false</div>
+                <div><input type="submit" value="送信"></div>
+            </div>
+        </form>
+
+        <form method="POST" th:action="@{/bind/check2}" class="bg-primary p-3">
+            <h3>Listでの複数パラメータ受け取り</h3>
+            <input type="checkbox" name="roles" value="1">利用者
+            <input type="checkbox" name="roles" value="2">管理者
+            <input type="checkbox" name="roles" value="3">システム管理者
+            <input type="submit" value="送信">
+        </form>
+
+        <form method="POST" th:action="@{/bind/check3}" class="bg-success p-3">
+            <h3>ネストしたJavaBeansとのバインディング</h3>
+            食べ物名<input type="text" name="food.foodName" value="みかん">
+            食べ物の値段<input type="text" name="food.price" value="100">
+            <br>
+            旅行先<input type="text" name="trip.destination" value="イタリア">
+            料金<input type="text" name="trip.price" value="100000">
+            出発日<input type="date" name="trip.departureDate" value="2023-10-01">
+            <br>
+            <input type="submit" value="送信">
+        </form>
+
+        <form method="POST" th:action="@{/bind/check4}" class="bg-info p-3">
+            <h3>Mapでのパラメータ受け取り</h3>
+            <input type="text" name="drink['1']" value="コーラ">
+            <input type="text" name="drink['2']" value="ソーダ">
+            <input type="text" name="drink['3']" value="オレンジジュース">
+            <input type="submit" value="送信">
+        </form>
+    </div>
+</th:block>
+<th:block th:fragment="body-scripts"></th:block>
+</html>
