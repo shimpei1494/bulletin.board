@@ -1,9 +1,5 @@
 package com.example.bulletin.board.controller;
 
-import com.example.bulletin.board.model.form.BindCheckForm1;
-import com.example.bulletin.board.model.form.BindCheckForm2;
-import com.example.bulletin.board.model.form.BindCheckForm3;
-import com.example.bulletin.board.model.form.BindCheckForm4;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,6 +22,8 @@ public class RedirectCheckController {
     @PostMapping("/submit")
     public String check(@RequestParam String word, RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("word", word);
+        // 以下でもリダイレクト先に値を渡すことができた
+        // redirectAttributes.addAttribute("word", word);
         return "redirect:/redirect_check/";
     }
 
