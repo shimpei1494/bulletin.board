@@ -20,7 +20,7 @@ public class RedirectCheckController {
     }
 
     @PostMapping("/submit")
-    public String check(@RequestParam String word, RedirectAttributes redirectAttributes) {
+    public String submit(@RequestParam String word, RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("word", word);
         // 以下でもリダイレクト先に値を渡すことができた
         // redirectAttributes.addAttribute("word", word);
