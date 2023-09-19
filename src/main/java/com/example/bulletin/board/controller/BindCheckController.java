@@ -1,36 +1,21 @@
 package com.example.bulletin.board.controller;
 
-import com.example.bulletin.board.entity.gen.Post;
-import com.example.bulletin.board.logic.CreatePostLogic;
-import com.example.bulletin.board.logic.GetPostListLogic;
-import com.example.bulletin.board.logic.UpdatePostLogic;
-import com.example.bulletin.board.model.form.*;
-import com.example.bulletin.board.model.view.BoardView;
-import com.example.bulletin.board.service.BulletinBoardService;
-import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.example.bulletin.board.model.form.BindCheckForm1;
+import com.example.bulletin.board.model.form.BindCheckForm2;
+import com.example.bulletin.board.model.form.BindCheckForm3;
+import com.example.bulletin.board.model.form.BindCheckForm4;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/bind")
 public class BindCheckController {
 
-    private BulletinBoardService bulletinBoardService;
-
-    private GetPostListLogic getPostListLogic;
-
-    private CreatePostLogic createPostLogic;
-
-    private UpdatePostLogic updatePostLogic;
-
-    public BindCheckController(BulletinBoardService bulletinBoardService, GetPostListLogic getPostListLogic, CreatePostLogic createPostLogic, UpdatePostLogic updatePostLogic) {
-        this.bulletinBoardService = bulletinBoardService;
-        this.getPostListLogic = getPostListLogic;
-        this.createPostLogic = createPostLogic;
-        this.updatePostLogic = updatePostLogic;
+    public BindCheckController() {
     }
 
     @GetMapping("/check")
