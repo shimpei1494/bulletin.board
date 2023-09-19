@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/layout :: layout(~{::title}, ~{::body-content}, ~{::body-scripts}, ~{::body-stylesheet})}"
+      lang="ja">
+<th:block th:fragment="title">
+  <title>リダイレクト確認画面</title>
+</th:block>
+<th:block th:fragment="body-stylesheet"></th:block>
+<th:block th:fragment="body-content">
+
+  <h2>リダイレクト確認画面</h2>
+
+  <form method="POST" th:action="@{/redirect_check/submit}">
+    <input type="text" name="word">
+    <input type="submit" value="送信">
+  </form>
+
+  <div class="bg-warning">
+    <p>リダイレクト時のみ以下を表示</p>
+    <p th:text="${word}"></p>
+  </div>
+
+</th:block>
+<th:block th:fragment="body-scripts"></th:block>
+</html>
