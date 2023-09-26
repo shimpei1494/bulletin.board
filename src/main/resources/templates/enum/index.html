@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/layout :: layout(~{::title}, ~{::body-content}, ~{::body-scripts}, ~{::body-stylesheet})}"
+      lang="ja">
+<th:block th:fragment="title">
+  <title>Enum確認画面</title>
+</th:block>
+<th:block th:fragment="body-stylesheet"></th:block>
+<th:block th:fragment="body-content">
+  <h1>Enum確認</h1>
+  <div class="vstack gap-3">
+    <form th:action="@{/enum/check1}" method="post" class="bg-warning p-3">
+      <h3>一番シンプルな列挙子だけのEnum（StringのリクエストパラメータをvalueOfでEnumに）</h3>
+      <p>JAPAN,AMERICA,CHINE以外ではエラーとなる</p>
+      <input type="text" name="country" th:value="JAPAN">
+      <input type="submit" value="送信">
+    </form>
+    <form th:action="@{/enum/check2}" method="post" class="bg-info p-3">
+      <h3>一番シンプルな列挙子だけのEnum（Enumでリクエストパラメータをバインディング）</h3>
+      <p>JAPAN,AMERICA,CHINE以外ではエラーとなる</p>
+      <input type="text" name="country" th:value="JAPAN">
+      <input type="submit" value="送信">
+    </form>
+    <form th:action="@{/enum/check3}" method="post" class="bg-success p-3">
+      <h3>選択した麦わらの一味のクルーの情報を表示する</h3>
+      <select name="onePeaceClue">
+        <th:block th:each="clue : ${clueList}">
+          <option th:text="${clue}"></option>
+        </th:block>
+      </select>
+      <input type="submit" value="送信">
+    </form>
+  </div>
+</th:block>
+<th:block th:fragment="body-scripts"></th:block>
+</html>
