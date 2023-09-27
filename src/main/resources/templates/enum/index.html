@@ -31,6 +31,30 @@
       </select>
       <input type="submit" value="送信">
     </form>
+    <div class="bg-danger">
+      <h3>麦わらの一味クルーの一覧表を表示</h3>
+      <button class="m-3">
+        <a th:href="@{/enum/check4}">リンク</a>
+      </button>
+    </div>
+    <form method="post" th:action="@{/enum/check5}" class="bg-secondary p-3">
+      <h3>選択したクルーがLUFFY、ZORO、SANJIのどれかなら3強メンバーと表示</h3>
+      <select name="onePeaceClue">
+        <th:block th:each="clue : ${clueList}">
+          <option th:text="${clue}"></option>
+        </th:block>
+      </select>
+      <input type="submit" value="送信">
+    </form>
+    <form method="post" th:action="@{/enum/check6}" class="bg-warning p-3">
+      <h3>選択したクルーが悪魔の実の能力者かどうかを判別</h3>
+      <select name="onePeaceClue">
+        <th:block th:each="clue : ${clueList}">
+          <option th:text="${clue}"></option>
+        </th:block>
+      </select>
+      <input type="submit" value="送信">
+    </form>
   </div>
 </th:block>
 <th:block th:fragment="body-scripts"></th:block>

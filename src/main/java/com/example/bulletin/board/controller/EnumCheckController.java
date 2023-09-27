@@ -3,10 +3,7 @@ package com.example.bulletin.board.controller;
 import com.example.bulletin.board.constant.CountryEnum;
 import com.example.bulletin.board.constant.OnePeaceEnum;
 import com.example.bulletin.board.model.dto.ClueDto;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +18,7 @@ public class EnumCheckController {
 
     @GetMapping("/")
     public ModelAndView index(ModelAndView mav) {
-        // valuesメソッドでEnumの列挙子を配列で取得できるが、今回は不要なのでコメントアウト
-//        OnePeaceEnum[] clueArrays = OnePeaceEnum.values();
-        List<String> clueList = OnePeaceEnum.getOnePeaceList();
+        List<String> clueList = OnePeaceEnum.getClueNameList();
         mav.addObject("clueList", clueList);
         mav.setViewName("enum/index");
         return mav;
@@ -65,6 +60,33 @@ public class EnumCheckController {
         var clueDto = new ClueDto(clueName, clueNum, clueRole, clueSpecialMove);
         mav.addObject("clueDto", clueDto);
         mav.setViewName("enum/check3");
+        return mav;
+    }
+
+    @GetMapping("/check4")
+    public ModelAndView check4(ModelAndView mav) {
+        List<ClueDto> list = OnePeaceEnum.getClueInfoList();
+        mav.addObject("clueList", list);
+        mav.setViewName("enum/check4");
+        return mav;
+    }
+
+    @PostMapping("/check5")
+    public ModelAndView check5(@RequestParam OnePeaceEnum onePeaceClue, ModelAndView mav) {
+        String message = "3強メンバーではありません";
+        if (OnePeaceEnum.isLuffyZoroSanji(onePeaceClue)) {
+            message = "3強メンバーです";
+        }
+        mav.addObject("message", message);
+        mav.setViewName("enum/check5");
+        return mav;
+    }
+
+    @PostMapping("/check6")
+    public ModelAndView check6(@RequestParam OnePeaceEnum onePeaceClue, ModelAndView mav) {
+        String message = onePeaceClue.hasEatenDevilFruits() ? "悪魔の実を食べています" : "悪魔の実を食べていません";
+        mav.addObject("message", message);
+        mav.setViewName("enum/check6");
         return mav;
     }
 

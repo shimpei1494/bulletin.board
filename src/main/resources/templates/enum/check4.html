@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/layout :: layout(~{::title}, ~{::body-content}, ~{::body-scripts}, ~{::body-stylesheet})}"
+      lang="ja">
+<th:block th:fragment="title">
+    <title>Enum確認画面</title>
+</th:block>
+<th:block th:fragment="body-stylesheet"></th:block>
+<th:block th:fragment="body-content">
+    <h1>麦わらの一味の一覧表示</h1>
+    <table class="table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col">船員番号</th>
+            <th scope="col">名前</th>
+            <th scope="col">船での役割</th>
+            <th scope="col">得意な技</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr th:each="clue : ${clueList}">
+            <th th:text="${clue.clueNum}"></th>
+            <td th:text="${clue.clueName}"></td>
+            <td th:text="${clue.clueRole}"></td>
+            <td th:text="${clue.clueSpecialMove}"></td>
+          </tr>
+        </tbody>
+    </table>
+</th:block>
+<th:block th:fragment="body-scripts"></th:block>
+</html>
